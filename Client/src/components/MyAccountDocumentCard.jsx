@@ -53,12 +53,12 @@ function MyAccountDocumentCard({ ime, autor, kolegij, glasovi, datum, opis, file
 						</Col>
 
 						<Col className="d-flex justify-content-end">
-							<div>
+							{/* <div>
 								<Button variant="secondary" href={fileUrl} className="w-100">
 									Pregledaj&nbsp;
 									<i className="fa-solid fa-eye fa-sm" />
 								</Button>
-							</div>
+							</div> */}
 							<div className="mx-2">
 								<a href="/primjer.pdf" download>
 									<Button variant="secondary" className="w-100">

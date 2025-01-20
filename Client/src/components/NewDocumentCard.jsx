@@ -73,31 +73,31 @@ function NewDocumentCard({ ime, autor, kolegij, glasovi, datum, opis, fileUrl })
 							)}
 						</Col>
 						<Col sm="4" md="3" className="d-flex text-primary">
-							<div className={`${disliked ? "text-primary" : ""}`} onClick={handleDislike}>
-								<i
-									className={`fa-regular fa-thumbs-down fa-flip-horizontal fa-xl ${disliked ? "fa-solid" : "fa-regular"}`}
-									style={{
-										cursor: "pointer",
-									}}
-								></i>
-							</div>
 							<div onClick={handleLike}>
 								<i
-									className={`fa-thumbs-up fa-xl mx-2  ${liked ? "fa-solid" : "fa-regular"}`}
+									className={`fa-thumbs-up fa-xl  ${liked ? "fa-solid" : "fa-regular"}`}
 									style={{
 										transform: "translateY(-5px)",
 										cursor: "pointer",
 									}}
 								></i>
 							</div>
+							<div className={`${disliked ? "text-primary" : ""}`} onClick={handleDislike}>
+								<i
+									className={`fa-regular fa-thumbs-down fa-flip-horizontal fa-xl mx-2 ${disliked ? "fa-solid" : "fa-regular"}`}
+									style={{
+										cursor: "pointer",
+									}}
+								></i>
+							</div>
 						</Col>
 						<Col sm="8" md="6" className="d-flex justify-content-end">
-							<div className="mx-2">
+							{/* <div className="mx-2">
 								<Button variant="secondary" href={fileUrl} className="w-100">
 									Pregledaj&nbsp;
 									<i className="fa-solid fa-eye fa-sm" />
 								</Button>
-							</div>
+							</div> */}
 							<div>
 								<a href="/primjer.pdf" download>
 									<Button variant="primary" className="w-100">

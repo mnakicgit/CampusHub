@@ -33,8 +33,8 @@ function App() {
 					</Route>
 
 					<Route element={<BareLayout />}>
-						<Route path="/login" element={<Login />} changeUserFunction={changeUser} />
-						<Route path="/registracija" element={<Registracija />} changeUserFunction={changeUser} />
+						<Route path="/login" element={<Login changeUserFunction={changeUser} />} />
+						<Route path="/registracija" element={<Registracija changeUserFunction={changeUser} />} />
 					</Route>
 
 					{/* <Route path="/view-document" element={<ViewDocument />} /> */}

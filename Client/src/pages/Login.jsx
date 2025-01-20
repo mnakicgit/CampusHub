@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
-function Login() {
+function Login({ changeUserFunction }) {
+	const navigate = useNavigate();
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	//server ocekuje [username, jmbag]
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		var zaSlanje = [email];
+		console.log(zaSlanje);
+
+		changeUserFunction("user");
+
+		navigate("/myaccount");
+	};
 	return (
 		<>
 			<div className="d-flex flex-column align-items-center" style={{ position: "relative", top: "0", left: "0" }}>
@@ -14,15 +29,15 @@ function Login() {
 				/>
 				<Card className="rounded-4 pt-5" style={{ minWidth: "22rem", position: "relative", top: "0px", left: "0px", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
 					<Card.Body>
-						<Form className="d-flex flex-column align-items-center">
+						<Form onSubmit={handleSubmit} className="d-flex flex-column align-items-center">
 							<Form.Group className="mb-3 w-100 d-flex flex-column align-items-center" controlId="loginFormUsername">
-								<Form.Label>Username</Form.Label>
-								<Form.Control type="text" placeholder="Upiši username" />
+								<Form.Label>Email</Form.Label>
+								<Form.Control type="text" placeholder="Upiši email" value={email} onChange={(e) => setEmail(e.target.value)} />
 							</Form.Group>
 
 							<Form.Group className="mb-3 w-100 d-flex flex-column align-items-center" controlId="loginFormPassword">
 								<Form.Label>Password</Form.Label>
-								<Form.Control type="password" placeholder="Upiši password" />
+								<Form.Control type="password" placeholder="Upiši password" value={password} onChange={(e) => setPassword(e.target.value)} />
 							</Form.Group>
 
 							<Button className="mt-2" variant="primary" type="submit">
