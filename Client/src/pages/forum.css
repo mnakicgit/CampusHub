@@ -1,0 +1,524 @@
+/* Glavni kontejner */
+.forum-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #fffdfd;
+}
+
+/* Sidebar */
+.forum-sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Početno skriven */
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    padding: 10px;
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Otvoreni sidebar */
+.forum-sidebar.open {
+    left: 0;
+}
+
+/* Dugme za sidebar */
+.open-sidebar {
+    position: absolute;
+    background-color: rgb(152, 212, 150);
+    color: black;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+}
+.close-sidebar
+{
+    position: absolute;
+    background-color: rgb(152, 212, 150);
+    color: black;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    z-index: 100; 
+}
+
+/* Dugme za otvaranje sidebar-a */
+.open-sidebar {
+    top: 70px;
+    left: 0;
+    position:fixed;
+    
+}
+
+/* Dugme za zatvaranje sidebar-a */
+.close-sidebar {
+    top: 70px;
+    right: 0;
+}
+
+/* Dugme za Start a Discussion */
+.forum-button {
+    
+    background-color: #007bff;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    width: calc(100% - 20px);
+    margin-top: 140px;
+    height: 60px;
+    
+    transition: background-color 0.3s;
+}
+
+.forum-button:hover {
+    background-color: #e68a00;
+}
+
+/* Forum item */
+.forum-item {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fafafa;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.forum-item h3, .forum-item p {
+    margin: 0;
+    color: #333;
+}
+
+.forum-item p {
+    color: #666;
+}
+
+/* Komentari */
+.comment, .comment-input textarea, .comment-submit {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.comment {
+    background-color: #f1f1f1;
+    margin-top: 10px;
+}
+
+.comment-submit {
+    background-color: #ff9800;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-submit:hover {
+    background-color: #e68a00;
+}
+
+.comment-input textarea {
+    margin-bottom: 10px;
+}
+
+/* Sekcija za favorite */
+.forum-favorites {
+    margin-top: -15px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+}
+
+.favorites-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.favorites-item {
+    background-color: #fafafa;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.favorites-item:hover {
+    background-color: #f1f1f1;
+}
+
+.favorites-item b {
+    color: #333;
+}
+
+.favorites-item p {
+    color: #666;
+    font-size: 14px;
+}
+
+.favorites-item-remove, .favorites-item-add {
+    background-color: #ff9800;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.favorites-item-remove:hover, .favorites-item-add:hover {
+    background-color: #e68a00;
+}
+
+.forum-main h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 36px;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.forum-main h3 {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #34495e;
+    margin: 20px auto;
+    width: 80%;
+    text-align: justify;
+    background-color: #f4f6f7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.forum-main h3:hover {
+    background-color: #ecf0f1;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+}
+
+.forum-main h3::first-letter {
+    font-size: 2em;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.forum-main h3 {
+    background-color: #f9f9f9; /* Svijetlo siva pozadina */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Blagi sjenčani efekat */
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+
+.forum-main {
+    margin: 30px auto;
+    width: 700px;
+    padding: 20px;
+    background-color: #ffffff; /* Bijela pozadina */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sjenčani okvir */
+}
+
+.forum-intro {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 20px;
+    cursor: pointer; /* Indikacija da je klikabilno */
+}
+
+.forum-intro:hover {
+    background-color: #ecf0f1;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+}
+.forum-create-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/*    */
+
+/* Stil za formu */
+.forum-create-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    max-width: 800px;
+    height: 700px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Naslov forme */
+.forum-create-form h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Input i textarea stilovi */
+.forum-create-form input,
+.forum-create-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/*            */
+.welcome-message {
+    background-color: #f0f8ff; /* Svijetloplava pozadina */
+    color: #007bff; /* Plavi tekst */
+    border: 1px solid #007bff; /* Plavi okvir */
+    border-radius: 10px; /* Zaobljeni rubovi */
+    padding: 20px; /* Unutarnji razmak */
+    margin: 20px auto; /* Centriranje margine */
+    text-align: center; /* Poravnanje sadržaja */
+    max-width: 600px; /* Maksimalna širina poruke */
+}
+
+.welcome-message h3 {
+    margin-bottom: 15px; /* Razmak između teksta i gumba */
+    font-size: 16px; /* Veličina fonta */
+    line-height: 1.5; /* Razmak između redova */
+}
+
+.welcome-message button {
+    background-color: #007bff; /* Plava pozadina gumba */
+    color: white; /* Bijeli tekst gumba */
+    border: none; /* Ukloni okvir */
+    border-radius: 5px; /* Zaobljeni rubovi */
+    padding: 10px 15px; /* Unutarnji razmak */
+    font-size: 14px; /* Veličina fonta */
+    cursor: pointer; /* Promjena pokazivača na ruku */
+    transition: background-color 0.3s ease; /* Glatka promjena boje */
+    margin-top: 10px; /* Razmak od poruke */
+}
+
+.welcome-message button:hover {
+    background-color: #0056b3; /* Tamnija plava za hover */
+}
+
+.forum-create-form textarea {
+    width: 100%; /* Zauzmi cijelu širinu roditeljskog elementa */
+    height: 150px; /* Povećana visina za lakše pisanje */
+    padding: 10px; /* Prostor unutar polja */
+    margin: 10px 0; /* Razmak između elemenata */
+    font-size: 16px; /* Udobna veličina fonta */
+    border: 1px solid #ccc; /* Lagana siva granica */
+    border-radius: 5px; /* Zaobljeni rubovi */
+    resize: none; /* Onemogućava promjenu veličine */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Lagana sjena */
+}
+
+/* Stiliziranje gumba za preuzimanje datoteke */
+.file-preview a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.file-preview a:hover {
+    background-color: #45a049; /* Tamnija nijansa zelene na hover */
+    transform: translateY(-2px); /* Blagi pomak prema gore pri hoveru */
+}
+
+.file-preview a:active {
+    background-color: #388e3c; /* Još tamnija nijansa zelene pri kliku */
+    transform: translateY(0); /* Povratak u početnu poziciju pri kliku */
+}
+
+/* Dodajte ikonu za datoteku (opcionalno) */
+.file-preview a::before {
+    content: "📎 "; /* Prikazuje ikonu papira */
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+/* Stiliziranje inputa za odabir datoteke */
+.file-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.file-input {
+    display: none; /* Sakriva stvarni input tipa file */
+}
+
+.file-input-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #2196F3; /* Plava boja gumba */
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.file-input-label:hover {
+    background-color: #1976D2; /* Tamnija nijansa plave na hover */
+    transform: translateY(-2px);
+}
+
+.file-input-label:active {
+    background-color: #1565C0; /* Još tamnija nijansa plave pri kliku */
+    transform: translateY(0);
+}
+
+.file-input-label::before {
+    content: "📁"; /* Ikona mape */
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+/* Prikaz datoteke koja je odabrana */
+.file-name {
+    margin-left: 10px;
+    font-style: italic;
+    color: #555;
+}
+
+/* Prikaz kada nije odabrana datoteka */
+.no-file-chosen {
+    font-style: italic;
+    color: #888;
+    margin-left: 10px;
+}
+
+/* Dodaj malo razmaka između gumba i obavijesti */
+.file-input-container p {
+    margin-top: 10px;
+}
+
+
+
+
+/* Stilizacija komentara */
+.comment {
+    background-color: #f9f9f9; /* Svijetlo siva pozadina */
+    margin-top: 15px; /* Veći razmak između komentara */
+    padding: 15px; /* Veći unutarnji razmak za bolju preglednost */
+    border: 2px solid #007bff; /* Plavi rub za bolju preglednost */
+    border-radius: 5px; /* Zaobljeni rubovi */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Blaga sjena oko komentara */
+}
+
+/* Ime korisnika koji je poslao komentar */
+.comment .comment-author {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 5px; /* Razmak ispod imena */
+}
+
+/* Tekst komentara */
+.comment .comment-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Stil za komentare kad je korisnik prijavljen */
+.comment .comment-author {
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #007bff; /* Plava boja za ime korisnika */
+}
+
+/* Input za unos novog komentara */
+.comment-input textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Stilizacija gumba za postavljanje komentara */
+.comment-submit {
+    background-color: #ff9800;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.comment-submit:hover {
+    background-color: #e68a00;
+}
+
+.delete-forum-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-forum-button:hover {
+    background-color: darkred;
+}
