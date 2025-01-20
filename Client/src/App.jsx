@@ -8,7 +8,7 @@ import Dokumenti from "./pages/Dokumenti";
 import Forum from "./pages/Forum";
 import MyAccount from "./pages/MyAccount";
 import Login from "./pages/Login";
-import Registracija from "./pages/Register";
+import Registracija from "./pages/Registracija";
 // import ViewDocument from "./components/ViewDocument";
 import NewDocumentCard from "./components/NewDocumentCard";
 

@@ -1,8 +1,8 @@
 import React from "react";
-import { Container, Card } from "react-bootstrap";
-import Form from "react-bootstrap";
+import { Container, Card, Button } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 
-function Register() {
+function Registracija() {
 	return (
 		<>
 			<Card className="rounded-4">
@@ -16,7 +16,7 @@ function Register() {
 						<Form.Group className="mb-3 w-100 d-flex flex-column align-items-center" controlId="loginFormJMBAG">
 							<Form.Label>JMBAG</Form.Label>
 							<Form.Control type="number" placeholder="Upiši JMBAG" min="1000000000" max="9999999999" />
-							<Form.Text className="text-muted">JMBAG nam je potreban da bi potvrdili da ste zaista student</Form.Text>
+							<Form.Text className="text-muted mb-1">JMBAG nam je potreban kako bi potvrdili da ste zaista student</Form.Text>
 						</Form.Group>
 
 						<Form.Group className="mb-3 w-100 d-flex flex-column align-items-center" controlId="loginFormPassword">
@@ -39,4 +39,4 @@ function Register() {
 	);
 }
 
-export default Register;
+export default Registracija;
