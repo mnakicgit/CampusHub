@@ -59,14 +59,14 @@ function MyAccountDocumentCard({ ime, autor, kolegij, glasovi, datum, opis, file
 									<i className="fa-solid fa-eye fa-sm" />
 								</Button>
 							</div> */}
-							<div className="mx-2">
+							{/* <div className="mx-2">
 								<a href="/primjer.pdf" download>
 									<Button variant="secondary" className="w-100">
 										Uredi&nbsp;
 										<i className="fa-regular fa-pen-to-square fa-sm" />
 									</Button>
 								</a>
-							</div>
+							</div> */}
 							<div>
 								<a href="/primjer.pdf" download>
 									<Button variant="primary" className="w-100">

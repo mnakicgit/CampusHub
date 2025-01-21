@@ -5,8 +5,8 @@ import axios from "axios";
 
 const allDocuments = [
 	{
-		ime: "MojDokument.pdf",
-		autor: "Ana Anić",
+		ime: "NekiFile.docx",
+		autor: "MojUsername",
 		postotak: "75",
 		glasovi: "80",
 		datum: "1.12.2024.",
@@ -17,20 +17,8 @@ const allDocuments = [
 		godina: "1.",
 	},
 	{
-		ime: "SkriptaRadnaVerzija.pdf",
-		autor: "Ivo Ivić",
-		postotak: "91",
-		glasovi: "100",
-		datum: "11.11.2024.",
-		opis: "Kratki opis",
-		kolegij: "Programsko Inženjerstvo",
-		fakultet: "PMF",
-		smijer: "Elektro",
-		godina: "2.",
-	},
-	{
-		ime: "NajboljaSkriptaIkad.pdf",
-		autor: "Marija Marić",
+		ime: "Skripta.pdf",
+		autor: "MojUsername",
 		postotak: "20",
 		glasovi: "10",
 		datum: "1.12.2024.",
@@ -45,6 +33,7 @@ const allDocuments = [
 
 function MyAccount() {
 	const [uploadEnabled, setUploadEnabled] = useState(false);
+	const [shown, setShown] = useState(false);
 	const [fakultet, setFakultet] = useState("");
 	const [smijer, setSmijer] = useState("");
 	const [godina, setGodina] = useState("");
@@ -60,39 +49,27 @@ function MyAccount() {
 		if (name === "kolegij") setKolegij(value);
 	};
 
-	const [selectedFile, setSelectedFile] = useState(null);
-
-	const handleFileChange = (e) => {
-		setSelectedFile(e.target.files[0]);
-	};
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (selectedFile) {
-			var zaSlanje = [username, jmbag];
-			console.log(zaSlanje);
 
-			axios.post("http://localhost:5000/", zaSlanje).then((rez) => console.log(rez));
-		} else {
-			alert("Odaberi datoteku za upload");
-		}
+		var zaSlanje = ["NoviDokument", opis, 1, privatno];
+		console.log(zaSlanje);
+
+		axios.post("http://localhost:5000/", zaSlanje).then((rez) => console.log(rez));
+
+		setUploadEnabled(!uploadEnabled);
+		setShown(true);
 	};
 
 	return (
 		<div>
-			{/* vidi w3schools tutorial kako uploadati dokument, drag and drop...*/}
-			{/*link na njihov servera:*/}
-			{/* <form action="">
-				<input type="file" id="myFile" name="filename" />
-				<input type="submit" />
-			</form> */}
 			<Card className="rounded-4 mx-2 py-2" style={{ background: "#f0f0f0", border: "none" }}>
 				<Card.Body>
 					{/* privremena boja pozadine */}
 					<Container>
 						<Row className="d-flex align-items-end">
 							<Col md="3" sm="3">
-								<h4 className="my-0">@MojUsername</h4>
+								<h4 className="my-0">MojUsername</h4>
 							</Col>
 							<Col>
 								<h6 className="my-0 text-muted">mojmail@gmail.com</h6>
@@ -122,7 +99,7 @@ function MyAccount() {
 								<Row>
 									<Form.Group controlId="formFile" className="mb-4">
 										<Form.Label>Odaberi dokument</Form.Label>
-										<Form.Control type="file" onChange={handleFileChange} />
+										<Form.Control type="file" />
 									</Form.Group>
 								</Row>
 								<Form.Label>Odaberi kolegij</Form.Label>
@@ -176,7 +153,7 @@ function MyAccount() {
 										<Button onClick={() => setUploadEnabled(!uploadEnabled)} className="mx-2" variant="danger">
 											Odustani
 										</Button>
-										<Button onClick={() => setUploadEnabled(!uploadEnabled)}>Potvrdi</Button>
+										<Button type="submit">Potvrdi</Button>
 									</Col>
 								</Row>
 							</Container>
@@ -201,6 +178,69 @@ function MyAccount() {
 							fileUrl={doc.fileUrl}
 						/>
 					))}
+				</Row>
+				<Row>
+					{shown && (
+						<Container className="mb-3">
+							<Card>
+								<Card.Header as="h6">Programsko Inženjerstvo</Card.Header>
+								<Card.Body className="px-4">
+									<Row className="align-items-end">
+										<Col md="3" sm="3">
+											<Card.Title
+												className="mb-0"
+												style={{
+													overflow: "hidden",
+													textOverflow: "ellipsis",
+													whiteSpace: "nowrap",
+													lineHeight: "normal",
+												}}
+											>
+												Primjer.txt
+											</Card.Title>
+										</Col>
+										<Col md="2" sm="3" className="text-muted">
+											<i>autor: MojUsername</i>
+										</Col>
+										<Col md="2" sm="3" className="text-muted">
+											objavljeno: 21.01.2025.
+										</Col>
+									</Row>
+
+									<Row className="my-4">
+										<Col>
+											<h6 className="m-0">Opis:</h6>
+											Kratki opis
+										</Col>
+									</Row>
+
+									<Row className="align-items-end">
+										<Col sm="12" md="3" className="text-muted mb-2">
+											Nema glasova
+										</Col>
+										<Col className="d-flex justify-content-end">
+											{/* <div className="mx-2">
+												<a href="/primjer.pdf" download>
+													<Button variant="secondary" className="w-100">
+														Uredi&nbsp;
+														<i className="fa-regular fa-pen-to-square fa-sm" />
+													</Button>
+												</a>
+											</div> */}
+											<div>
+												<a href="/primjer.pdf" download>
+													<Button variant="primary" className="w-100">
+														Download&nbsp;
+														<i className="fa-solid fa-download fa-sm" />
+													</Button>
+												</a>
+											</div>
+										</Col>
+									</Row>
+								</Card.Body>
+							</Card>
+						</Container>
+					)}
 				</Row>
 			</Container>
 		</div>
