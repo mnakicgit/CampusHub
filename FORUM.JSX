@@ -32,6 +32,7 @@ function Forum() {
 
     const dismissWelcomeMessage = () => {
         setShowWelcomeMessage(false);
+		setIsSidebarOpen(true); //otvara
         localStorage.setItem('dismissedWelcomeMessage', 'true');
     };
 
@@ -179,7 +180,7 @@ function Forum() {
             </div>
 
             <div className="forum-main">
-                <h1>Forum</h1>
+                
 
                 {showWelcomeMessage && (
                     <div className="welcome-message">
